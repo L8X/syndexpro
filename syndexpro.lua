@@ -19,7 +19,9 @@ OldNamecall = hookmetamethod(game, "__namecall", function(Self, ...)
 end)
 
 -- < Services > --
-getgenv.gethui() = task.spawn(function() return game:GetService("CoreGui") end)
+function gethui()
+return game:GetService("CoreGui") 
+end
 		
 local InsertService = Services.InsertService
 local CoreGui = gethui()
