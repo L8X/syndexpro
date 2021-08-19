@@ -31,7 +31,7 @@ if RemoteDebugWindow then
     RemoteDebugWindow.Parent:Destroy()
 end end
 		
-getgenv.yeetdex() = yeetdex()
+getgenv.yeetdex = yeetdex()
 -- < Services > --	
 local InsertService = Services.InsertService
 local CoreGui = gethui()
