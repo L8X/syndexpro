@@ -19,12 +19,12 @@ OldNamecall = hookmetamethod(game, "__namecall", function(Self, ...)
 end)
 
 -- < Functions > --
-getgenv.gethui() = function gethui()
+function gethui()
 return game:GetService("CoreGui") 
 end
 
 
-getgenv().YeetDex() = function()
+function yeetdex()
 local CoreGui = game:GetService("CoreGui")
 local RemoteDebugWindow = CoreGui:FindFirstChild("RemoteDebugWindow", true)
 if RemoteDebugWindow then
