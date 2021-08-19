@@ -24,7 +24,7 @@ return game:GetService("CoreGui")
 end
 
 
-getgenv.yeetdex() = function yeetdex()
+getgenv().yeetdex() = function yeetdex()
 local CoreGui = game:GetService("CoreGui")
 local RemoteDebugWindow = CoreGui:FindFirstChild("RemoteDebugWindow", true)
 if RemoteDebugWindow then
