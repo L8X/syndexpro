@@ -124,46 +124,32 @@ Protector():ProtectInstance(Dex)
 task.synchronize()
 end)
 
-task.wait()
-
 local RemDebugWin = game:GetService("CoreGui").RobloxGui:FindFirstChild("RemoteDebugWindow", true)
 
 if RemDebugWin then
 task.spawn(function()
 task.synchronize()
-task.wait()
 for i, label in pairs(RemoteDebugWindow.Parent:GetDescendants()) do
 if label:IsA("TextLabel") then
 sethiddenproperty(label, "Confidential", true)
-task.wait()
 for i, box in pairs(RemoteDebugWindow.Parent:GetDescendants()) do
 if box:IsA("TextBox") then
 sethiddenproperty(box, "Confidential", true)
-task.wait()
 for i, button in pairs(RemoteDebugWindow.Parent:GetDescendants()) do
 if button:IsA("TextButton") then
 sethiddenproperty(button, "Confidential", true)
-task.wait()
 for i, moddy in pairs(RemoteDebugWindow.Parent:GetDescendants()) do
 if moddy:IsA("ModuleScript") then
 sethiddenproperty(moddy, "Confidential", true)
-task.wait()
 end
-task.wait()
 end
-task.wait()
 end
-task.wait()
 end
-task.wait()
 end
-task.wait()
 end
-task.wait()
 end 
-task.wait()
 end 
-task.wait()
-end)
 task.synchronize()
+end)
+wait(0)
 end
