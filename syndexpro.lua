@@ -117,5 +117,7 @@ Load(Dex)
 syn.protect_gui(Dex)
 Protector():ProtectInstance(RandomObject)
 Dex.Parent = RandomObject
+syn.protect_gui(Dex.Parent)
+Dex.Name = RandomCharacters(Random_Instance:NextInteger(5,20))
 Protector():ProtectInstance(Dex)
 end)
