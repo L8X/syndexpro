@@ -24,11 +24,11 @@ return game:GetService("CoreGui")
 end
 
 
-getgenv().YeetDex() = function(a)
+getgenv().YeetDex() = function()
 local CoreGui = game:GetService("CoreGui")
 local RemoteDebugWindow = CoreGui:FindFirstChild("RemoteDebugWindow", true)
 if RemoteDebugWindow then
-RemoteDebugWindow.Parent:Destroy()
+    RemoteDebugWindow.Parent:Destroy()
 end end
 		
 -- < Services > --	
