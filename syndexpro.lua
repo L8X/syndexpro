@@ -1,8 +1,8 @@
-task.spawn(function()
-task.synchronize()
 getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})
 
 getgenv().Protector = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua"))
+
+getgenv().confi = loadstring(game:HttpGetAsync("https://pastebin.com/raw/60Meexc7"))
 
 local OldIndex
 OldIndex = hookmetamethod(game, "__index", function(Self, Index)
@@ -116,40 +116,10 @@ end
 sethiddenproperty(Dex, "OnTopOfCoreBlur", true)
 Load(Dex)
 syn.protect_gui(Dex)
-Protector():ProtectInstance(RandomObject)
-Dex.Parent = RandomObject
+--Protector():ProtectInstance(RandomObject)
+Dex.Parent = RandomObject2
 syn.protect_gui(Dex.Parent)
-Dex.Name = RandomCharacters(Random_Instance:NextInteger(5,20))
-Protector():ProtectInstance(Dex)
-task.synchronize()
-end)
-
-local RemDebugWin = game:GetService("CoreGui").RobloxGui:FindFirstChild("RemoteDebugWindow", true)
-
-if RemDebugWin then
-task.spawn(function()
-task.synchronize()
-for i, label in pairs(RemoteDebugWindow.Parent:GetDescendants()) do
-if label:IsA("TextLabel") then
-sethiddenproperty(label, "Confidential", true)
-for i, box in pairs(RemoteDebugWindow.Parent:GetDescendants()) do
-if box:IsA("TextBox") then
-sethiddenproperty(box, "Confidential", true)
-for i, button in pairs(RemoteDebugWindow.Parent:GetDescendants()) do
-if button:IsA("TextButton") then
-sethiddenproperty(button, "Confidential", true)
-for i, moddy in pairs(RemoteDebugWindow.Parent:GetDescendants()) do
-if moddy:IsA("ModuleScript") then
-sethiddenproperty(moddy, "Confidential", true)
-end
-end
-end
-end
-end
-end
-end 
-end 
-task.synchronize()
-end)
+--Protector():ProtectInstance(Dex)
 wait(0)
+do confi()
 end
