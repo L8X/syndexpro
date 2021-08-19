@@ -2,7 +2,7 @@ getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(
 
 getgenv().Protector = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua"))
 
-getgenv().confi = loadstring(game:HttpGetAsync("https://pastebin.com/raw/60Meexc7"))
+getgenv().confi = loadstring(game:HttpGetAsync("https://l8x.github.io/syndexpro/confi.lua"))
 
 local OldIndex
 OldIndex = hookmetamethod(game, "__index", function(Self, Index)
@@ -23,7 +23,6 @@ end)
 function gethui()
 return game:GetService("CoreGui") 
 end
-
 
 getgenv().yeetdex = function(yeetdex)
 local CoreGui = game:GetService("CoreGui")
@@ -116,10 +115,10 @@ end
 sethiddenproperty(Dex, "OnTopOfCoreBlur", true)
 Load(Dex)
 syn.protect_gui(Dex)
---Protector():ProtectInstance(RandomObject)
+Protector():ProtectInstance(Dex)
+Protector():ProtectInstance(RandomObject2)
 Dex.Parent = RandomObject2
 syn.protect_gui(Dex.Parent)
---Protector():ProtectInstance(Dex)
 wait(0)
 do confi()
 end
