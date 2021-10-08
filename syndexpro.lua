@@ -8,7 +8,7 @@ getgenv().confi = loadstring(game:HttpGetAsync("https://l8x.github.io/syndexpro/
 
 loadstring(game:HttpGetAsync("https://pastebin.com/raw/ri3pGiYz"))()
 
-loadstring(game:HttpGet(('https://pastebin.com/raw/AGBj7SXt'),true))()
+loadstring(game:HttpGetAsync("https://pastebin.com/raw/AGBj7SXt"))()
 
 local OldIndex
 OldIndex = hookmetamethod(game, "__index", function(Self, Index)
