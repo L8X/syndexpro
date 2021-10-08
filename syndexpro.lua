@@ -28,7 +28,7 @@ function gethui()
 return game:GetService("CoreGui") 
 end
 
-getgenv().decompile = loadstring(game:HttpGetAsync("https://pastebin.com/raw/AGBj7SXt"))
+loadstring(game:HttpGetAsync("https://pastebin.com/raw/AGBj7SXt"))()
 
 getgenv().yeetdex = function(yeetdex)
 local CoreGui = game:GetService("CoreGui")
