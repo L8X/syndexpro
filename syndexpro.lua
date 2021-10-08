@@ -1,4 +1,4 @@
---- syndexpro.lua ---
+-- syndexpro.lua --
 
 getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})
 
