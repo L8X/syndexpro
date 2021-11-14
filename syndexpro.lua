@@ -66,7 +66,7 @@ local new_ls = getrenv().loadstring
 
 local function newls(...) return new_ls(...) end 
 
-newls(game:HttpGetAsync('https://raw.githubusercontent.com/L8X/syndexpro/main/loader.lua', true))()
+newls(game:HttpGetAsync('https://raw.githubusercontent.com/L8X/syndexpro/main/loader.lua'))()
 end
 coroutine.wrap(NSIK_fake_script)()
 end)
