@@ -47,14 +47,14 @@ local shared_env = getrenv().shared
 shared_env.loadstr = _G.loadstr
 
 for i = 1, 5 do
-getrenv()['loadstring'] = shared_env.loadstr
+getrenv().loadstring = shared_env.loadstr
 end
 
-getgenv()['loadstring'] = getrenv()['loadstring']
+getgenv().loadstring = getrenv().loadstring
 
-loadstring = getrenv()['loadstring']
+loadstring = getrenv().loadstring
 
-local new_ls = getrenv()['loadstring']
+local new_ls = getrenv().loadstring
 
 local function newls(...) return new_ls(...) end 
 
