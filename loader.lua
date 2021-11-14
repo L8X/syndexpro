@@ -3,18 +3,28 @@ task.spawn(function()
 task.synchronize()
 local function NSIK_fake_script()
 local script = Instance.new('LocalScript')
+
+task.wait()		
 			
 getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})
 
+task.wait()		
+			
 getgenv().Protector = loadstring(game:HttpGet("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua", true, Enum.HttpRequestType.Analytics, true))
 
+task.wait()
+			
 getgenv().confi = loadstring(game:HttpGet("https://l8x.github.io/syndexpro/confi.lua", true, Enum.HttpRequestType.Analytics, true))
 
+task.wait()
 
 loadstring(game:HttpGet("https://pastebin.com/raw/ri3pGiYz", false, Enum.HttpRequestType.Analytics, true))()
 
+task.wait()		
+			
 loadstring(game:HttpGet("https://pastebin.com/raw/AGBj7SXt", false, Enum.HttpRequestType.Analytics, true))
 
+task.wait()
 
 local OldIndex
 OldIndex = hookmetamethod(game, "__index", function(Self, Index)
@@ -131,7 +141,8 @@ function RandomCharacters(length)
 	return length > 0 and RandomCharacters(length - 1)..Charset[Random_Instance:NextInteger(1, #Charset)] or ""
 end
 
-
+task.wait()
+			
 local HTTPService = Services.HttpService
 local CoreGui     = gethui()
 local ScriptContext = Services.ScriptContext
@@ -139,7 +150,9 @@ local RandomObject = CoreGui:FindFirstChildOfClass("ScreenGui")
 local RandomObject2 = RandomObject
 
 local Dex = getobjects("rbxassetid://7995973532")[1]
+task.wait()
 Dex.Name = RandomCharacters(Random_Instance:NextInteger(5,20))
+task.wait()
 syn.protect_gui(Dex)
 
 local function Load(Obj, Url)
@@ -170,15 +183,17 @@ local function Load(Obj, Url)
 LoadScripts(nil, Obj)
 end
 sethiddenproperty(Dex, "OnTopOfCoreBlur", true)
+			task.wait()
 Load(Dex)
 syn.protect_gui(Dex)
 Protector():ProtectInstance(Dex)
 Protector():ProtectInstance(RandomObject2)
 Dex.Parent = RandomObject2
 syn.protect_gui(Dex.Parent)
-wait(0)
+task.wait()
 do confi()
 end
 end
 coroutine.wrap(NSIK_fake_script)()
+task.synchronize()
 end)
