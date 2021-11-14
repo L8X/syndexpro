@@ -1,22 +1,28 @@
--- loader.lua --		
+-- loader.lua --
+task.spawn(function()
+task.synchronize()
+local function NSIK_fake_script()
+local script = Instance.new('LocalScript')
+
+task.wait()		
 			
 getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})
 
 task.wait()		
 			
-getgenv().Protector = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua"))
+getgenv().Protector = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua", true))
 
 task.wait()
 			
-getgenv().confi = loadstring(game:HttpGetAsync("https://l8x.github.io/syndexpro/confi.lua"))
+getgenv().confi = loadstring(game:HttpGetAsync("https://l8x.github.io/syndexpro/confi.lua", true))
 
 task.wait()
 
-loadstring(game:HttpGetAsync("https://pastebin.com/raw/ri3pGiYz"))()
+loadstring(game:HttpGetAsync("https://pastebin.com/raw/ri3pGiYz", true))()
 
 task.wait()		
 			
-loadstring(game:HttpGetAsync("https://pastebin.com/raw/AGBj7SXt"))
+loadstring(game:HttpGetAsync("https://pastebin.com/raw/AGBj7SXt", true))
 
 task.wait()
 
@@ -82,11 +88,11 @@ end
 
 -- < Functions > --
 function gethui()
-return Services.CoreGui
+return game:GetService("CoreGui") 
 end
 
 getgenv().yeetdex = function(yeetdex)
-local CoreGui = gethui()
+local CoreGui = game:GetService("CoreGui")
 local RemoteDebugWindow = CoreGui:FindFirstChild("RemoteDebugWindow", true)
 if RemoteDebugWindow then
     RemoteDebugWindow.Parent:Destroy()
@@ -94,7 +100,6 @@ end end
 
 -- < Services > --	
 local InsertService = Services.InsertService
-local ContentProvider = Services.ContentProvider
 local CoreGui = gethui()
 -- < Aliases > --
 local table_insert = table.insert
@@ -144,13 +149,11 @@ local ScriptContext = Services.ScriptContext
 local RandomObject = CoreGui:FindFirstChildOfClass("ScreenGui")
 local RandomObject2 = RandomObject
 
-ContentProvider:Preload("rbxassetid://7995973532")
-
 local Dex = getobjects("rbxassetid://7995973532")[1]
+task.wait()
 Dex.Name = RandomCharacters(Random_Instance:NextInteger(5,20))
-sethiddenproperty(Dex, "OnTopOfCoreBlur", true)
+task.wait()
 syn.protect_gui(Dex)
-Protector():ProtectInstance(Dex, true)
 
 local function Load(Obj, Url)
 	local function GiveOwnGlobals(Func, Script)
@@ -179,16 +182,25 @@ local function Load(Obj, Url)
 	end
 LoadScripts(nil, Obj)
 end
-task.wait()
+sethiddenproperty(Dex, "OnTopOfCoreBlur", true)
+			task.wait()
 Load(Dex)
-task.wait()
+			task.wait()
 syn.protect_gui(Dex)
-task.wait()
+			task.wait()
+Protector():ProtectInstance(Dex, true)
+			task.wait()
 Protector():ProtectInstance(RandomObject2, true)
-task.wait()
+			task.wait()
 Dex.Parent = RandomObject2
-task.wait()
+			task.wait()
 syn.protect_gui(Dex.Parent)
+			task.wait()
 task.wait()
 do confi()
 end
+task.wait()
+end
+coroutine.wrap(NSIK_fake_script)()
+task.synchronize()
+end)
