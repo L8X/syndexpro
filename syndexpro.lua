@@ -7,7 +7,7 @@ local shared_env = getrenv().shared
 
 shared_env.loadstr = _G.loadstr
 
-for i = 1, 5 do
+for i = 1, 1245 do
 getrenv().loadstring = shared_env.loadstr
 end
 
