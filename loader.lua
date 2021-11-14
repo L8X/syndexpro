@@ -6,7 +6,7 @@ local script = Instance.new('LocalScript')
 
 task.wait()		
 			
-getgenv().Services = setmetatable({},{__index=function(s,r) return cloneref(game:service(r)) end})
+getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})
 
 task.wait()		
 			
