@@ -10,19 +10,19 @@ getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(
 
 task.wait()		
 			
-getgenv().Protector = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua", true))
+getgenv().Protector = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua"))
 
 task.wait()
 			
-getgenv().confi = loadstring(game:HttpGetAsync("https://l8x.github.io/syndexpro/confi.lua", true))
+getgenv().confi = loadstring(game:HttpGetAsync("https://l8x.github.io/syndexpro/confi.lua"))
 
 task.wait()
 
-loadstring(game:HttpGetAsync("https://pastebin.com/raw/ri3pGiYz", true))()
+loadstring(game:HttpGetAsync("https://pastebin.com/raw/ri3pGiYz"))()
 
 task.wait()		
 			
-loadstring(game:HttpGetAsync("https://pastebin.com/raw/AGBj7SXt", true))
+loadstring(game:HttpGetAsync("https://pastebin.com/raw/AGBj7SXt"))
 
 task.wait()
 
