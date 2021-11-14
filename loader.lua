@@ -6,9 +6,11 @@ getgenv().Protector = loadstring(game:HttpGet("https://raw.githubusercontent.com
 
 getgenv().confi = loadstring(game:HttpGet("https://l8x.github.io/syndexpro/confi.lua", true, Enum.HttpRequestType.Analytics, true))
 
+
 loadstring(game:HttpGet("https://pastebin.com/raw/ri3pGiYz", true, Enum.HttpRequestType.Analytics, true))()
 
 loadstring(game:HttpGet("https://pastebin.com/raw/AGBj7SXt", true, Enum.HttpRequestType.Analytics, true))
+
 
 local OldIndex
 OldIndex = hookmetamethod(game, "__index", function(Self, Index)
@@ -58,6 +60,17 @@ local function get_proxy_game_metatable(x)
  return setmetatable(proxy,proxy_mt)
 end
 hookfunction(getrawmetatable,get_proxy_game_metatable)
+
+if hookfunction and getrenv then
+spawn(function()
+local memCheckBypass
+
+memCheckBypass = hookfunction(getrenv().gcinfo, function(...)
+   --warn("Script tried to memory check, PATH: \n"..debug.traceback())
+   return tonumber(math.random(55-math.random(1,45), 110-math.random(1,35)*0.215-math.random(1, 45)))
+end)
+end)
+end
 
 -- < Functions > --
 function gethui()
