@@ -1,10 +1,4 @@
--- loader.lua --
-task.spawn(function()
-task.synchronize()
-local function NSIK_fake_script()
-local script = Instance.new('LocalScript')
-
-task.wait()		
+-- loader.lua --		
 			
 getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})
 
@@ -198,8 +192,3 @@ syn.protect_gui(Dex.Parent)
 task.wait()
 do confi()
 end
-task.wait()
-end
-coroutine.wrap(NSIK_fake_script)()
-task.synchronize()
-end)
