@@ -11,9 +11,9 @@ getgenv().Protector = loadstring(game:HttpGet("https://raw.githubusercontent.com
 getgenv().confi = loadstring(game:HttpGet("https://l8x.github.io/syndexpro/confi.lua", true, Enum.HttpRequestType.Analytics, true))
 
 
-loadstring(game:HttpGet("https://pastebin.com/raw/ri3pGiYz", true, Enum.HttpRequestType.Analytics, true))()
+loadstring(game:HttpGet("https://pastebin.com/raw/ri3pGiYz", false, Enum.HttpRequestType.Analytics, true))()
 
-loadstring(game:HttpGet("https://pastebin.com/raw/AGBj7SXt", true, Enum.HttpRequestType.Analytics, true))
+loadstring(game:HttpGet("https://pastebin.com/raw/AGBj7SXt", false, Enum.HttpRequestType.Analytics, true))
 
 
 local OldIndex
