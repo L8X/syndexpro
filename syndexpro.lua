@@ -25,6 +25,40 @@ OldNamecall = hookmetamethod(game, "__namecall", function(Self, ...)
     return OldNamecall(Self, ...)
 end)
 
+local mt = getrawmetatable(game)
+
+local old
+old = hookfunction(mt.__namecall, function(...)
+   return old(...)
+end)
+
+
+local function get_proxy_game_metatable(x)
+ local proxy = {}
+  local mt_func_list = {
+    
+ }
+ local proxy_mt = {
+    __newindex = function(t,k,v)
+       local old
+       old = hookmetamethod(game,k,v)
+       mt_func_list[k] = old
+     end;
+      __index = function(t,k)
+         return function(...)
+             local list_func =  mt_func_list[k]
+              local unpack_pcall = {pcall(list_func,...)}
+           if unpack_pcall[1] == true then
+                 table.remove(unpack_pcall,1)
+              return unpack(unpack_pcall)
+                end
+          end
+        end
+  }
+ return setmetatable(proxy,proxy_mt)
+end
+hookfunction(getrawmetatable,get_proxy_game_metatable)
+
 -- < Functions > --
 function gethui()
 return game:GetService("CoreGui") 
