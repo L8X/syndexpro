@@ -19,11 +19,10 @@ if syn then
     end
 end
 
-local ScriptContext = cloneref(game:GetService("ScriptContext"))
 if is_syn == false then
 spawn(function()
-ScriptContext.ScriptsDisabled = false
-ScriptContext:SetTimeout(9e9)
+game:GetService("ScriptContext").ScriptsDisabled = false
+game:GetService("ScriptContext"):SetTimeout(9e9)
     repeat while true do error("This will run on Synapse only, dickwad") end until nil
 end)
 end
