@@ -87,7 +87,7 @@ local ScriptContext = Services.ScriptContext
 local RandomObject = CoreGui:FindFirstChildOfClass("ScreenGui")
 local RandomObject2 = RandomObject
 
-local Dex = getobjects("rbxassetid://7063643267")[1]
+local Dex = getobjects("rbxassetid://7995973532")[1]
 Dex.Name = RandomCharacters(Random_Instance:NextInteger(5,20))
 syn.protect_gui(Dex)
 
