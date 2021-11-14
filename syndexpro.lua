@@ -1,3 +1,5 @@
+task.spawn(function()
+task.synchronize()
 local is_syn = nil
 
 if not syn then
@@ -39,4 +41,6 @@ end
 
 loadstring = getgenv().loadstring
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/L8X/syndexpro/main/loader.lua'))()
+loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/L8X/syndexpro/main/loader.lua', true))()
+ task.synchronize()
+end)
