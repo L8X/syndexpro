@@ -88,11 +88,11 @@ end
 
 -- < Functions > --
 function gethui()
-return game:GetService("CoreGui") 
+return Services.CoreGui
 end
 
 getgenv().yeetdex = function(yeetdex)
-local CoreGui = game:GetService("CoreGui")
+local CoreGui = gethui()
 local RemoteDebugWindow = CoreGui:FindFirstChild("RemoteDebugWindow", true)
 if RemoteDebugWindow then
     RemoteDebugWindow.Parent:Destroy()
@@ -100,6 +100,7 @@ end end
 
 -- < Services > --	
 local InsertService = Services.InsertService
+local ContentProvider = Services.ContentProvider
 local CoreGui = gethui()
 -- < Aliases > --
 local table_insert = table.insert
@@ -149,11 +150,13 @@ local ScriptContext = Services.ScriptContext
 local RandomObject = CoreGui:FindFirstChildOfClass("ScreenGui")
 local RandomObject2 = RandomObject
 
+ContentProvider:Preload("rbxassetid://7995973532")
+
 local Dex = getobjects("rbxassetid://7995973532")[1]
-task.wait()
 Dex.Name = RandomCharacters(Random_Instance:NextInteger(5,20))
-task.wait()
+sethiddenproperty(Dex, "OnTopOfCoreBlur", true)
 syn.protect_gui(Dex)
+Protector():ProtectInstance(Dex, true)
 
 local function Load(Obj, Url)
 	local function GiveOwnGlobals(Func, Script)
@@ -182,20 +185,16 @@ local function Load(Obj, Url)
 	end
 LoadScripts(nil, Obj)
 end
-sethiddenproperty(Dex, "OnTopOfCoreBlur", true)
-			task.wait()
+task.wait()
 Load(Dex)
-			task.wait()
+task.wait()
 syn.protect_gui(Dex)
-			task.wait()
-Protector():ProtectInstance(Dex, true)
-			task.wait()
+task.wait()
 Protector():ProtectInstance(RandomObject2, true)
-			task.wait()
+task.wait()
 Dex.Parent = RandomObject2
-			task.wait()
+task.wait()
 syn.protect_gui(Dex.Parent)
-			task.wait()
 task.wait()
 do confi()
 end
