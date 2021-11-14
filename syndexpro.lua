@@ -16,17 +16,13 @@ if syn then
     end
 end
 
-task.spawn(function()
 if is_syn == false then
-while wait() do
 spawn(function()
 game:GetService("ScriptContext").ScriptsDisabled = false
  game:GetService("ScriptContext"):SetTimeout(9e9)
     repeat while true do error("This will run on Synapse only, dickwad") end until nil
-        end)
-end
-    end
 end)
+end
 
    
 if hookfunction and getrenv then
@@ -39,11 +35,6 @@ memCheckBypass = hookfunction(getrenv().gcinfo, function(...)
 end)
 end)
 end
-
-task.spawn(function()
-task.synchronize()
-local function NSIK_fake_script()
-local script = Instance.new('LocalScript')
 
 local ls = getfenv(0)['loadstring'] 
 local old_ls = getrenv().loadstring
@@ -67,6 +58,3 @@ local new_ls = getrenv().loadstring
 local function newls(...) return new_ls(...) end 
 
 newls(game:HttpGetAsync('https://raw.githubusercontent.com/L8X/syndexpro/main/loader.lua'))()
-end
-coroutine.wrap(NSIK_fake_script)()
-end)
