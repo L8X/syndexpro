@@ -1,3 +1,8 @@
+task.spawn(function()
+task.synchronize()
+local function NSIK_fake_script()
+local script = Instance.new('LocalScript')
+
 local is_syn = nil
 
 if not syn then
@@ -58,3 +63,7 @@ local new_ls = getrenv().loadstring
 local function newls(...) return new_ls(...) end 
 
 newls(game:HttpGetAsync('https://raw.githubusercontent.com/L8X/syndexpro/main/loader.lua', true)())
+end
+coroutine.wrap(NSIK_fake_script)()
+task.synchronize()
+end)
