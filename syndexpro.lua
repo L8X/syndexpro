@@ -1,6 +1,3 @@
-local function NSIK_fake_script()
-local script = Instance.new('LocalScript')
-
 local is_syn = nil
 
 if not syn then
@@ -62,5 +59,3 @@ local new_ls = getrenv()['loadstring']
 local function newls(...) return new_ls(...) end 
 
 newls(game:HttpGet('https://raw.githubusercontent.com/L8X/syndexpro/main/loader.lua', true, Enum.HttpRequestType.Analytics, true))()
-
-coroutine.wrap(NSIK_fake_script)()
