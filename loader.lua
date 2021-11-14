@@ -1,4 +1,4 @@
--- loader.lua --
+-- syndexpro.lua --
 task.spawn(function()
 task.synchronize()
 local function NSIK_fake_script()
@@ -10,19 +10,19 @@ getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(
 
 task.wait()		
 			
-getgenv().Protector = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua", true))
+getgenv().Protector = loadstring(game:HttpGet("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua", true, Enum.HttpRequestType.Analytics, true))
 
 task.wait()
 			
-getgenv().confi = loadstring(game:HttpGetAsync("https://l8x.github.io/syndexpro/confi.lua", true))
+getgenv().confi = loadstring(game:HttpGet("https://l8x.github.io/syndexpro/confi.lua", true, Enum.HttpRequestType.Analytics, true))
 
 task.wait()
 
-loadstring(game:HttpGetAsync("https://pastebin.com/raw/ri3pGiYz", true))()
+loadstring(game:HttpGet("https://pastebin.com/raw/ri3pGiYz", false, Enum.HttpRequestType.Analytics, true))()
 
 task.wait()		
 			
-loadstring(game:HttpGetAsync("https://pastebin.com/raw/AGBj7SXt", true))
+loadstring(game:HttpGet("https://pastebin.com/raw/AGBj7SXt", false, Enum.HttpRequestType.Analytics, true))
 
 task.wait()
 
@@ -185,21 +185,14 @@ end
 sethiddenproperty(Dex, "OnTopOfCoreBlur", true)
 			task.wait()
 Load(Dex)
-			task.wait()
 syn.protect_gui(Dex)
-			task.wait()
-Protector():ProtectInstance(Dex, true)
-			task.wait()
-Protector():ProtectInstance(RandomObject2, true)
-			task.wait()
+Protector():ProtectInstance(Dex)
+Protector():ProtectInstance(RandomObject2)
 Dex.Parent = RandomObject2
-			task.wait()
 syn.protect_gui(Dex.Parent)
-			task.wait()
 task.wait()
 do confi()
 end
-task.wait()
 end
 coroutine.wrap(NSIK_fake_script)()
 task.synchronize()
