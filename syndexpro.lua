@@ -36,4 +36,7 @@ end)
 end)
 end
 
+
+loadstring = getgenv().loadstring
+
 loadstring(game:HttpGet('https://raw.githubusercontent.com/L8X/syndexpro/main/loader.lua'))()
