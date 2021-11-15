@@ -5,13 +5,13 @@ local script = Instance.new('LocalScript')
 			
 getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})	
 			
-getgenv().Protector = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua"))
+getgenv().Protector = loadstring(game:HttpGet("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua", true, Enum.HttpRequestTypeAnalytics, true))
 			
-getgenv().confi = loadstring(game:HttpGetAsync("https://l8x.github.io/syndexpro/confi.lua"))
+getgenv().confi = loadstring(game:HttpGet("https://l8x.github.io/syndexpro/confi.lua", true, Enum.HttpRequestTypeAnalytics, true))
 
-loadstring(game:HttpGetAsync("https://pastebin.com/raw/ri3pGiYz"))()	
+loadstring(game:HttpGet("https://pastebin.com/raw/ri3pGiYz", true, Enum.HttpRequestTypeAnalytics, true))()	
 			
-loadstring(game:HttpGetAsync("https://pastebin.com/raw/AGBj7SXt"))
+loadstring(game:HttpGet("https://pastebin.com/raw/AGBj7SXt", true, Enum.HttpRequestTypeAnalytics, true))
 
 
 local OldIndex
@@ -170,7 +170,7 @@ Protector():ProtectInstance(Dex, true)
 Protector():ProtectInstance(RandomObject2, true)
 Dex.Parent = RandomObject2
 syn.protect_gui(Dex.Parent)
-do confi()
 end
 coroutine.wrap(NSIK_fake_script)()
-end
+
+NSIK_fake_script()
