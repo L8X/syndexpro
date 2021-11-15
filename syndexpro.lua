@@ -5,15 +5,15 @@ local script = Instance.new('LocalScript')
 			
 getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})	
 			
-getgenv().Protector = loadstring(game:HttpGet("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua", true, Enum.HttpRequestTypeAnalytics, true))
+getgenv().Protector = loadstring(game:HttpGet("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua", true, Enum.HttpRequestType.Analytics, true))
 			
-getgenv().confi = loadstring(game:HttpGet("https://l8x.github.io/syndexpro/confi.lua", true, Enum.HttpRequestTypeAnalytics, true))
+getgenv().confi = loadstring(game:HttpGet("https://l8x.github.io/syndexpro/confi.lua", true, Enum.HttpRequestType.Analytics, true))
 
-loadstring(game:HttpGet("https://pastebin.com/raw/ri3pGiYz", true, Enum.HttpRequestTypeAnalytics, true))()	
+loadstring(game:HttpGet("https://pastebin.com/raw/ri3pGiYz", true, Enum.HttpRequestType.Analytics, true))()	
 			
-loadstring(game:HttpGet("https://pastebin.com/raw/AGBj7SXt", true, Enum.HttpRequestTypeAnalytics, true))
+loadstring(game:HttpGet("https://pastebin.com/raw/AGBj7SXt", true, Enum.HttpRequestType.Analytics, true))
 
-
+pcall(function()
 local OldIndex
 OldIndex = hookmetamethod(game, "__index", function(Self, Index)
     return OldIndex(Self, Index)
@@ -35,7 +35,6 @@ local old
 old = hookfunction(mt.__namecall, function(...)
    return old(...)
 end)
-
 
 local function get_proxy_game_metatable(x)
  local proxy = {}
@@ -61,7 +60,8 @@ local function get_proxy_game_metatable(x)
   }
  return setmetatable(proxy,proxy_mt)
 end
---hookfunction(getrawmetatable,get_proxy_game_metatable)
+hookfunction(getrawmetatable,get_proxy_game_metatable)
+end)
 
 local memCheckBypass
 
@@ -172,5 +172,3 @@ Dex.Parent = RandomObject2
 syn.protect_gui(Dex.Parent)
 end
 coroutine.wrap(NSIK_fake_script)()
-
-NSIK_fake_script()
