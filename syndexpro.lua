@@ -5,13 +5,13 @@ local script = Instance.new('LocalScript')
 			
 getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})	
 			
-getgenv().Protector = loadstring(game:HttpGet("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua", true, Enum.HttpRequestType.Analytics, true))
+getgenv().Protector = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/pamlib/prote.lua/ca01e9b8b3478762370d4a1d1ee65bae6ee881a3/main.lua"))
 			
-getgenv().confi = loadstring(game:HttpGet("https://l8x.github.io/syndexpro/confi.lua", true, Enum.HttpRequestType.Analytics, true))
+getgenv().confi = loadstring(game:HttpGetAsync("https://l8x.github.io/syndexpro/confi.lua"))
 
-loadstring(game:HttpGet("https://pastebin.com/raw/ri3pGiYz", false, Enum.HttpRequestType.Analytics, true))()	
+loadstring(game:HttpGetAsync("https://pastebin.com/raw/ri3pGiYz"))()	
 			
-loadstring(game:HttpGet("https://pastebin.com/raw/AGBj7SXt", false, Enum.HttpRequestType.Analytics, true))
+loadstring(game:HttpGetAsync("https://pastebin.com/raw/AGBj7SXt"))
 
 
 local OldIndex
@@ -63,15 +63,11 @@ local function get_proxy_game_metatable(x)
 end
 --hookfunction(getrawmetatable,get_proxy_game_metatable)
 
-if hookfunction and getrenv then
-spawn(function()
 local memCheckBypass
 
 memCheckBypass = hookfunction(getrenv().gcinfo, function(...)
    --warn("Script tried to memory check, PATH: \n"..debug.traceback())
    return tonumber(math.random(55-math.random(1,45), 110-math.random(1,35)*0.215-math.random(1, 45)))
-end)
-end)
 end
 
 -- < Functions > --
