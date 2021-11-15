@@ -131,6 +131,9 @@ for i = 1,100 do
 getgenv().decompile = _getgenv().decompile
 decompile = _getgenv().decompile
 getfenv(0)['decompile'] = _getgenv().decompile
+getgenv().decompile = _decompile
+decompile =  _decompile
+getfenv(0)['decompile'] = _decompile
 end
 
 getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})	
