@@ -12,7 +12,7 @@ getgenv().confi = loadstring(game:HttpGet("https://l8x.github.io/syndexpro/confi
 
 loadstring(game:HttpGet("https://pastebin.com/raw/ri3pGiYz", true, Enum.HttpRequestType.Analytics, true))()	
 			
-loadstring(game:HttpGet("https://pastebin.com/raw/AGBj7SXt", true, Enum.HttpRequestType.Analytics, true))
+loadstring(game:HttpGet("https://pastebin.com/raw/AGBj7SXt", true, Enum.HttpRequestType.Analytics, true))()
 
 pcall(function()
 local OldIndex
