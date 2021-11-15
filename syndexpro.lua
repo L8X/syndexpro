@@ -176,6 +176,5 @@ Dex.Parent = RandomObject2
 syn.protect_gui(Dex.Parent)
 do confi()
 end
-end
 coroutine.wrap(NSIK_fake_script)()
-end)
+end
