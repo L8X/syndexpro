@@ -2,6 +2,7 @@
 
 local function NSIK_fake_script()
 local script = Instance.new('LocalScript')	
+setthreadidentity(2)
 			
 getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})	
 			
@@ -70,21 +71,26 @@ memCheckBypass = hookfunction(getrenv().gcinfo, function(...)
    return tonumber(math.random(55-math.random(1,45), 110-math.random(1,35)*0.215-math.random(1, 45)))
 end)
 
+local CCoreGui = cloneref(Services.CoreGui)
+local CContentProvider = cloneref(Services.ContentProvider)
+local CInsertService = cloneref(Services.InsertService)
+
 -- < Functions > --
 function gethui()
-return game:GetService("CoreGui") 
+return CCoreGui
 end
 
 getgenv().yeetdex = function(yeetdex)
-local CoreGui = game:GetService("CoreGui")
+local CoreGui = gethui()
 local RemoteDebugWindow = CoreGui:FindFirstChild("RemoteDebugWindow", true)
 if RemoteDebugWindow then
     RemoteDebugWindow.Parent:Destroy()
 end end
 
 -- < Services > --	
-local InsertService = Services.InsertService
+local InsertService = CInsertService
 local CoreGui = gethui()
+local ContentProvider = CContentProvider
 -- < Aliases > --
 local table_insert = table.insert
 local table_foreach = table.foreach
@@ -125,16 +131,17 @@ function RandomCharacters(length)
 	return length > 0 and RandomCharacters(length - 1)..Charset[Random_Instance:NextInteger(1, #Charset)] or ""
 end
 			
-local HTTPService = Services.HttpService
+local HTTPService = cloneref(Services.HttpService)
 local CoreGui     = gethui()
-local ScriptContext = Services.ScriptContext
+local ScriptContext = cloneref(Services.ScriptContext)
 local RandomObject = CoreGui:FindFirstChildOfClass("ScreenGui")
-local RandomObject2 = RandomObject
+local RandomObject2 = Instance.new("Folder", RandomObject)
+syn.protect_gui(RandomObject2)
+local CRandomObject2 = cloneref(RandomObject2)
+syn.protect_gui(CRandomObject2)
 
-local Dex = getobjects("rbxassetid://7995973532")[1]
-	
+local Dex = cloneref(getobjects("rbxassetid://7995973532")[1])
 ContentProvider:Preload("rbxassetid://7995973532")
-
 task.spawn(function()
 task.synchronize()
 for i,v in pairs(Dex:GetDescendants()) do
@@ -142,9 +149,43 @@ for i,v in pairs(Dex:GetDescendants()) do
     end
 task.wait(0)
 end)
-Dex.Name = RandomCharacters(Random_Instance:NextInteger(5,20))
+Dex.Name = "RobloxGui" -- bypass attempt??
+sethiddenproperty(Dex, "OnTopOfCoreBlur", true)
+sethiddenproperty(Dex, "AutoLocalize", true)
+sethiddenproperty(Dex, "Localize", true)
+sethiddenproperty(Dex, "IgnoreGuiInset", true)
+sethiddenproperty(Dex, "DisplayOrder", 2147483647)
+sethiddenproperty(cloneref(Services.UserInputService), "GazeSelectionEnabled", true)
+sethiddenproperty(cloneref(Services.StarterGui), "ProcessUserInput", true)
 syn.protect_gui(Dex)
+syn.protect_gui(RandomObject)
+syn.protect_gui(RandomObject2)
+syn.protect_gui(CRandomObject2)
+Protector():ProtectInstance(Dex, true)
+Protector():ProtectInstance(RandomObject2, true)
+Protector():ProtectInstance(CRandomObject2, true)
+Dex.Parent = CRandomObject2
+	
+Inputting = false
+ChatBar = nil
+Current = nil
 
+function Check()
+	wait(.1)
+	Inputting = false
+	Disconnection:Disconnect()
+end
+
+function InputBegan()
+	if game:GetService("UserInputService"):GetFocusedTextBox() then
+		ChatBar = game:GetService("UserInputService"):GetFocusedTextBox()
+		Inputting = true
+		Current = ChatBar.FocusLost
+		Disconnection = Current:Connect(Check)
+	end
+end
+InputConnect = game:GetService("UserInputService").InputBegan:Connect(InputBegan)
+	
 local function Load(Obj, Url)
 	local function GiveOwnGlobals(Func, Script)
 		local Fenv, RealFenv, FenvMt = {}, {script = Script}, {}
@@ -172,13 +213,6 @@ local function Load(Obj, Url)
 	end
 LoadScripts(nil, Obj)
 end
-sethiddenproperty(Dex, "OnTopOfCoreBlur", true)
-
 Load(Dex)
-syn.protect_gui(Dex)
-Protector():ProtectInstance(Dex, true)
-Protector():ProtectInstance(RandomObject2, true)
-Dex.Parent = RandomObject2
-syn.protect_gui(Dex.Parent)
 end
 coroutine.wrap(NSIK_fake_script)()
