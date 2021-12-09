@@ -481,12 +481,3 @@ end
 end
 return _decompile(Script, ...)
 end)
-
-for i = 1, 1000 do
- getgenv().decompile = _decompile
- getrenv().decompile = _decompile
- getfenv(0).decompile = _decompile
- getfenv(1).decompile = _decompile
-end
-  
-  
