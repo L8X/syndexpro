@@ -1,7 +1,6 @@
 -- syndexpro.lua --
 
-local function NSIK_fake_script()
-local script = Instance.new('LocalScript')	
+local function NSIK_fake_script()	
 setthreadidentity(2)
 	
 local _decompile = assert(decompile or syn_decompile)
