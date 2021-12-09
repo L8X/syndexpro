@@ -1,6 +1,4 @@
 -- syndexpro.lua --
-
-local function NSIK_fake_script()	
 setthreadidentity(2)
 	
 local _decompile = assert(decompile or syn_decompile)
@@ -785,5 +783,3 @@ local function Load(Obj, Url)
 LoadScripts(nil, Obj)
 end
 Load(Dex)
-end
-coroutine.wrap(NSIK_fake_script)()
