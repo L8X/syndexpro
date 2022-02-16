@@ -2,7 +2,7 @@
 
 local function NSIK_fake_script()
 local script = Instance.new('LocalScript')	
-setthreadidentity(2)
+--setthreadidentity(2)
 	
 local _decompile = assert(decompile or syn_decompile)
 local _getscriptclosure = assert(getscriptclosure)
