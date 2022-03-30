@@ -269,9 +269,9 @@ syn.protect_gui(Dex)
 syn.protect_gui(RandomObject)
 syn.protect_gui(RandomObject2)
 syn.protect_gui(CRandomObject2)
-Protector():ProtectInstance(Dex, true)
-Protector():ProtectInstance(RandomObject2, true)
-Protector():ProtectInstance(CRandomObject2, true)
+Protector():ProtectInstance(Dex)
+Protector():ProtectInstance(RandomObject2)
+Protector():ProtectInstance(CRandomObject2)
 Dex.Parent = CRandomObject2
 	
 Inputting = false
