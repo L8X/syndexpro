@@ -90,7 +90,7 @@ mt.__namecall = spec.newclose(function(self, ...)
         end
     end
 
-    if (Method == "GetChildren" or Method == "GetDescendants") then
+    if (Method == "GetChildren" or Method == "children" or Method == "GetDescendants") then
         return tblfilter(__Namecall(self, ...), function(i, v)
             return not table.find(ProtectedInstances, v)
         end)
@@ -146,7 +146,7 @@ mt.__index = spec.newclose(function(Instance_, Index)
         end
     end
 
-    if (Index == "GetChildren" or Index == "GetDescendants") then
+    if (Index == "GetChildren" or Index == "children" or Index == "GetDescendants") then
         return function()
             return tblfilter(__Index(Instance_, Index)(Instance_), function(i, v)
                 return not table.find(ProtectedInstances, v)
