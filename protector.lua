@@ -193,13 +193,6 @@ end)
 
 spec.makereadonly(mt, true)
 
-for i, v in next, spec.getcons(game:GetService("UserInputService").TextBoxFocused) do
-    v:Disable()
-end
-for i, v in next, spec.getcons(game:GetService("UserInputService").TextBoxFocusReleased) do
-    v:Disable()
-end
-
 Prote.ProtectInstance = function(Instance_, disallow)
     if (not ProtectedInstances[Instance_]) then
         ProtectedInstances[#ProtectedInstances + 1] = Instance_
