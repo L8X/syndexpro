@@ -138,7 +138,7 @@ end
 
 getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})	
 			
-getgenv().Protector = loadstring(game:HttpGet("https://raw.githubusercontent.com/L8X/syndexpro/main/protector.lua", true, Enum.HttpRequestType.Analytics, true))
+--getgenv().Protector = loadstring(game:HttpGet("https://raw.githubusercontent.com/L8X/syndexpro/main/protector.lua", true, Enum.HttpRequestType.Analytics, true))
 			
 getgenv().confi = loadstring(game:HttpGet("https://l8x.github.io/syndexpro/confi.lua", true, Enum.HttpRequestType.Analytics, true))
 
@@ -244,20 +244,24 @@ local CoreGui     = gethui()
 local ScriptContext = cloneref(Services.ScriptContext)
 local RandomObject = CoreGui:FindFirstChildOfClass("ScreenGui")
 local RandomObject2 = Instance.new("Folder", RandomObject)
-syn.protect_gui(RandomObject2)
+
+pcall(function() syn.protect_gui(RandomObject2) end)
+
 local CRandomObject2 = cloneref(RandomObject2)
-syn.protect_gui(CRandomObject2)
+
+pcall(function() syn.protect_gui(CRandomObject2) end)
 
 local Dex = cloneref(getobjects("rbxassetid://7995973532")[1])
 ContentProvider:Preload("rbxassetid://7995973532")
 task.spawn(function()
-task.synchronize()
 for i,v in pairs(Dex:GetDescendants()) do
     syn.protect_gui(v)
     end
-task.wait(0)
+    task.wait(0)
 end)
 Dex.Name = "RobloxGui" -- bypass attempt??
+
+pcall(function()
 sethiddenproperty(Dex, "OnTopOfCoreBlur", true)
 sethiddenproperty(Dex, "AutoLocalize", true)
 sethiddenproperty(Dex, "Localize", true)
@@ -265,35 +269,18 @@ sethiddenproperty(Dex, "IgnoreGuiInset", true)
 sethiddenproperty(Dex, "DisplayOrder", 2147483647)
 sethiddenproperty(cloneref(Services.UserInputService), "GazeSelectionEnabled", true)
 sethiddenproperty(cloneref(Services.StarterGui), "ProcessUserInput", true)
+end)
+
+pcall(function()
 syn.protect_gui(Dex)
 syn.protect_gui(RandomObject)
 syn.protect_gui(RandomObject2)
 syn.protect_gui(CRandomObject2)
-Protector():ProtectInstance(Dex)
-Protector():ProtectInstance(RandomObject2)
-Protector():ProtectInstance(CRandomObject2)
-Dex.Parent = CRandomObject2
-	
-Inputting = false
-ChatBar = nil
-Current = nil
+end)
 
-function Check()
-	wait(.1)
-	Inputting = false
-	Disconnection:Disconnect()
-end
+Dex.Parent = gethiddengui() or gethui() or CRandomObject2
 
-function InputBegan()
-	if game:GetService("UserInputService"):GetFocusedTextBox() then
-		ChatBar = game:GetService("UserInputService"):GetFocusedTextBox()
-		Inputting = true
-		Current = ChatBar.FocusLost
-		Disconnection = Current:Connect(Check)
-	end
-end
-InputConnect = game:GetService("UserInputService").InputBegan:Connect(InputBegan)
-	
+
 local function Load(Obj, Url)
 	local function GiveOwnGlobals(Func, Script)
 		local Fenv, RealFenv, FenvMt = {}, {script = Script}, {}
