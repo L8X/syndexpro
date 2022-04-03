@@ -32,24 +32,18 @@ end)
 
 end)
 
-local memCheckBypass
-
-memCheckBypass = hookfunction(getrenv().gcinfo, function(...)
-   --warn("Script tried to memory check, PATH: \n"..debug.traceback())
-   return tonumber(math.random(55-math.random(1,45), 110-math.random(1,35)*0.215-math.random(1, 45)))
-end)
+local cloneref = cloneref or function(ref)
+return ref
+end
 
 local CCoreGui = cloneref(Services.CoreGui)
 local CContentProvider = cloneref(Services.ContentProvider)
 local CInsertService = cloneref(Services.InsertService)
 
 -- < Functions > --
-function gethui()
-return CCoreGui
-end
-
 getgenv().yeetdex = function(yeetdex)
-local CoreGui = gethui()
+
+local CoreGui = CCoreGui
 local RemoteDebugWindow = CoreGui:FindFirstChild("RemoteDebugWindow", true)
 if RemoteDebugWindow then
     RemoteDebugWindow.Parent:Destroy()
@@ -57,7 +51,7 @@ end end
 
 -- < Services > --	
 local InsertService = CInsertService
-local CoreGui = gethui()
+local CoreGui = CCoreGui
 local ContentProvider = CContentProvider
 -- < Aliases > --
 local table_insert = table.insert
