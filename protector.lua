@@ -73,7 +73,7 @@ local __Namecall = OldMetaMethods.__namecall
 local __Index = OldMetaMethods.__index
 local __NewIndex = OldMetaMethods.__newindex
 
-mt.__namecall = spec.newclose(function(self, ...)
+hookmetamethod(mt, "__namecall", spec.newclose(function(self, ...)
     if (checkcaller()) then
         return __Namecall(self, ...)
     end
@@ -105,7 +105,7 @@ mt.__namecall = spec.newclose(function(self, ...)
     return __Namecall(self, ...)
 end)
 
-mt.__index = spec.newclose(function(Instance_, Index)
+hookmetamethod(mt, "__index", spec.newclose(function(Instance_, Index)
     if (checkcaller()) then
         return __Index(Instance_, Index)
     end
@@ -165,7 +165,7 @@ mt.__index = spec.newclose(function(Instance_, Index)
     return __Index(Instance_, Index)
 end)
 
-mt.__newindex = spec.newclose(function(Instance_, Index, Value)
+hookmetamethod(mt, "__newindex", spec.newclose(function(Instance_, Index, Value)
     if (checkcaller()) then
         return __NewIndex(Instance_, Index, Value)
     end
