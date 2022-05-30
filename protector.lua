@@ -103,7 +103,7 @@ hookmetamethod(mt, "__namecall", spec.newclose(function(self, ...)
     end
 
     return __Namecall(self, ...)
-end)
+end))
 
 hookmetamethod(mt, "__index", spec.newclose(function(Instance_, Index)
     if (checkcaller()) then
@@ -163,7 +163,7 @@ hookmetamethod(mt, "__index", spec.newclose(function(Instance_, Index)
     end
 
     return __Index(Instance_, Index)
-end)
+end))
 
 hookmetamethod(mt, "__newindex", spec.newclose(function(Instance_, Index, Value)
     if (checkcaller()) then
@@ -189,7 +189,7 @@ hookmetamethod(mt, "__newindex", spec.newclose(function(Instance_, Index, Value)
     end
 
     return __NewIndex(Instance_, Index, Value)
-end)
+end))
 
 spec.makereadonly(mt, true)
 
