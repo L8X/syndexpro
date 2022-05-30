@@ -1014,5 +1014,3 @@ Hooks.GetStateEnabled = hookfunction(__H.GetStateEnabled, function(...)
     return Ret
 end)
 --END IMPORT [extend]
-
-print(ProtectInstance)
