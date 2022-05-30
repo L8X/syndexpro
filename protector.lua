@@ -1,3 +1,10 @@
+local game = game
+local GetService = game.GetService
+if (not game.IsLoaded(game)) then
+    local Loaded = game.Loaded
+    Loaded.Wait(Loaded);
+end
+
 --IMPORT [var]
 local Services = {
     Workspace = GetService(game, "Workspace");
