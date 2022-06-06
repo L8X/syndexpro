@@ -94,7 +94,7 @@ function RandomCharacters(length)
 end
 			
 local HTTPService = cloneref(Services.HttpService)
-local CoreGui     = gethui()
+local CoreGui     = cloneref(Services.CoreGui)
 local ScriptContext = cloneref(Services.ScriptContext)
 local RandomObject = CoreGui:FindFirstChildOfClass("ScreenGui")
 local RandomObject2 = Instance.new("Folder", RandomObject)
@@ -116,7 +116,6 @@ end)
 Dex.Name = "RobloxGui" -- bypass attempt??
 
 pcall(function()
-sethiddenproperty(Dex, "OnTopOfCoreBlur", true)
 sethiddenproperty(Dex, "AutoLocalize", true)
 sethiddenproperty(Dex, "Localize", true)
 sethiddenproperty(Dex, "IgnoreGuiInset", true)
