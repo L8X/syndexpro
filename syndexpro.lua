@@ -1,34 +1,25 @@
 -- syndexpro.lua --
 
-local function NSIK_fake_script()
+-- < Functions > --
 
-getgenv().Services = setmetatable({},{__index=function(s,r) return game:service(r) end})	
-						
 local cloneref = cloneref or function(ref)
 return ref
 end
 
-local CCoreGui = cloneref(Services.CoreGui)
-local CContentProvider = cloneref(Services.ContentProvider)
-local CInsertService = cloneref(Services.InsertService)
-
--- < Functions > --
-
-local CoreGui = CCoreGui
+local CoreGui = cloneref(game:GetService("CoreGui"))
 local RemoteDebugWindow = CoreGui:FindFirstChild("RemoteDebugWindow", true)
 if RemoteDebugWindow then
     RemoteDebugWindow.Parent:Destroy()
-end end
+end
 
 -- < Services > --	
-local InsertService = CInsertService
-local CoreGui = CCoreGui
-local ContentProvider = CContentProvider
+local CoreGui = cloneref(game:GetService("CoreGui"))
+local InsertService = cloneref(game:GetService("InsertService"))
 -- < Aliases > --
 local table_insert = table.insert
 local table_foreach = table.foreach
 local string_char = string.char
-getgenv().getobjects = function(a)
+local getobjects = function(a)
     local Objects = {}
     if a then
         local b = InsertService:LoadLocalAsset(a)
@@ -63,41 +54,18 @@ end
 function RandomCharacters(length)
 	return length > 0 and RandomCharacters(length - 1)..Charset[Random_Instance:NextInteger(1, #Charset)] or ""
 end
+
 			
-local HTTPService = cloneref(Services.HttpService)
-local CoreGui     = cloneref(Services.CoreGui)
-local ScriptContext = cloneref(Services.ScriptContext)
-local RandomObject = CoreGui:FindFirstChildOfClass("ScreenGui")
-local RandomObject2 = Instance.new("Folder", RandomObject)
-
-pcall(function() 
-if syn and syn.protect_gui then
-syn.protect_gui(RandomObject2)
-end
-end)
-
-local CRandomObject2 = cloneref(RandomObject2)
-
-pcall(function() 
-if syn and syn.protect_gui then
-syn.protect_gui(CRandomObject2)
-end
-end)
-	
 local Dex = cloneref(getobjects("rbxassetid://7995973532")[1])
-ContentProvider:Preload("rbxassetid://7995973532")
+local RandomGui = cloneref(CoreGui:FindFirstChildOfClass("ScreenGui"))
 
-pcall(function()
-task.spawn(function()
-for i,v in pairs(Dex:GetDescendants()) do
-    pcall(function() syn.protect_gui(v) end)
-    end
-end)
-end)
+pcall(function() syn.protect_gui(Dex) end)
+pcall(function() syn.protect_gui(CoreGui) end)
+pcall(function() syn.protect_gui(RandomGui) end)
 
-Dex.Name = "RobloxGui" -- bypass attempt??
+Dex.Name = RandomCharacters(20)
 
-Dex.Parent = gethiddengui and gethiddengui() or gethui and gethui() or CRandomObject2
+Dex.Parent = RandomGui
 
 local function Load(Obj, Url)
 	local function GiveOwnGlobals(Func, Script)
@@ -127,5 +95,3 @@ local function Load(Obj, Url)
 LoadScripts(nil, Obj)
 end
 Load(Dex)
-end
-coroutine.wrap(NSIK_fake_script)()
