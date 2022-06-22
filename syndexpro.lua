@@ -1,4 +1,14 @@
--- syndexpro.lua --
+-- ONLY FOR USE ON SYNAPSE X --
+
+if syn and type(syn) ~= "table" then
+game:Shutdown()
+end
+
+if not syn then
+game:Shutdown()
+end
+
+if syn and type(syn) == "table" then
 
 -- < Functions > --
 
@@ -100,3 +110,4 @@ local function Load(Obj, Url)
 pcall(LoadScripts, nil, Obj)
 end
 pcall(Load, Dex)
+end
