@@ -69,13 +69,15 @@ local Dex = cloneref(getobjects("rbxassetid://7995973532")[1])
 local SecureContainer = gethiddengui and cloneref(gethiddengui()) or gethui and cloneref(gethui()) or cloneref(CoreGui:FindFirstChildOfClass("ScreenGui") or CoreGui:FindFirstChildOfClass("Folder"))
 
 if syn and type(syn) == "table" and syn.protect_gui then
-syn.protect_gui(Dex)
-syn.protect_gui(SecureContainer)
+for i, v in pairs(Dex:GetDescendants()) do
+syn.protect_gui(v)
+end
 end
 
 if syn and type(syn) == "table" and syn.secure_gui then
-syn.secure_gui(Dex)
-syn.secure_gui(SecureContainer)
+for i, v in pairs(Dex:GetDescendants()) do
+syn.secure_gui(v)
+end
 end
 
 Dex.Name = RandomCharacters(20)
