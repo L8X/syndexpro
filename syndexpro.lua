@@ -55,17 +55,22 @@ function RandomCharacters(length)
 	return length > 0 and RandomCharacters(length - 1)..Charset[Random_Instance:NextInteger(1, #Charset)] or ""
 end
 
-			
 local Dex = cloneref(getobjects("rbxassetid://7995973532")[1])
-local RandomGui = cloneref(CoreGui:FindFirstChildOfClass("ScreenGui"))
+local SecureContainer = gethiddengui and cloneref(gethiddengui()) or gethui and cloneref(gethui()) or cloneref(CoreGui:FindFirstChildOfClass("ScreenGui") or CoreGui:FindFirstChildOfClass("Folder"))
 
-pcall(function() syn.protect_gui(Dex) end)
-pcall(function() syn.protect_gui(CoreGui) end)
-pcall(function() syn.protect_gui(RandomGui) end)
+if syn and type(syn) == "table" and syn.protect_gui then
+syn.protect_gui(Dex)
+syn.protect_gui(SecureContainer)
+end
+
+if syn and type(syn) == "table" and syn.secure_gui then
+syn.secure_gui(Dex)
+syn.secure_gui(SecureContainer)
+end
 
 Dex.Name = RandomCharacters(20)
 
-Dex.Parent = RandomGui
+Dex.Parent = SecureContainer
 
 local function Load(Obj, Url)
 	local function GiveOwnGlobals(Func, Script)
@@ -80,18 +85,18 @@ local function Load(Obj, Url)
 			RealFenv[b] = c 
 			end
 		end
-		setmetatable(Fenv, FenvMt)
+		pcall(setmetatable, Fenv, FenvMt)
 		pcall(setfenv, Func, Fenv)
 		return Func
 	end
 	local function LoadScripts(_, Script)
-		if Script:IsA("LocalScript") then
+		if Script:IsA("LocalScript") or Script:IsA("ModuleScript") then
 			task.spawn(function()
-				GiveOwnGlobals(loadstring(Script.Source,"="..Script:GetFullName()), Script)()
+                            GiveOwnGlobals(loadstring(Script.Source,"="..Script:GetFullName()), Script)()
 			end)
 		end
-		table_foreach(Script:GetChildren(), LoadScripts)
+		pcall(table_foreach, Script:GetChildren(), LoadScripts)
 	end
-LoadScripts(nil, Obj)
+pcall(LoadScripts, nil, Obj)
 end
-Load(Dex)
+pcall(Load, Dex)
