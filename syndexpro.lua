@@ -24,7 +24,7 @@ local getobjects = function(a)
     if a then
         local b = InsertService:LoadLocalAsset(a)
         if b then 
-            table_insert(Objects, b) 
+            pcall(table_insert, Objects, b) 
         end
     end
     return Objects
